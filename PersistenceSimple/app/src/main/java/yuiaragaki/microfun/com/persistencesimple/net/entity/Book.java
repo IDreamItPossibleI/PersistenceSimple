@@ -1,5 +1,6 @@
 package yuiaragaki.microfun.com.persistencesimple.net.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**

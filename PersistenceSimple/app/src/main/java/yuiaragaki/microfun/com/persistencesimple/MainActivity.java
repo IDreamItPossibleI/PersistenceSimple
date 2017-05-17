@@ -1,5 +1,6 @@
 package yuiaragaki.microfun.com.persistencesimple;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +33,12 @@ public class MainActivity extends AppCompatActivity {
         getBookWithISBNOnNext = new SubscriberOnNextListener<Book>() {
             @Override
             public void onNext(Book book) {
-                Log.e("123", "123");
+                if(book != null)
+                {
+                    Intent intent = new Intent(MainActivity.this, BookActivity.class);
+                    intent.putExtra("book_info", book);
+                    startActivity(intent);
+                }
             }
         };
 
@@ -48,5 +54,11 @@ public class MainActivity extends AppCompatActivity {
     public void onScan()
     {
         QrCodeScanUtil.getInstanse().scan("lalala");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 }
