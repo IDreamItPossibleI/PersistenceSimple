@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include android:id="@+id/content_frame_top_navigation"
+            layout="@layout/top_navigation_layout" />
+    </LinearLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/left_drawer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        app:insetForeground="@android:color/transparent"
+        app:headerLayout="@layout/drawer_left_login_layout"
+        app:menu="@menu/drawer_list">
+    </android.support.design.widget.NavigationView>
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/left_drawer"-->
+        <!--android:layout_width="300dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="left"-->
+        <!--android:background="#90FF91">-->
+        <!--<FrameLayout-->
+            <!--android:id="@+id/drawer_top_frame"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="120dp"></FrameLayout>-->
+        <!--<ListView-->
+            <!--android:id="@+id/drawer_list"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"></ListView>-->
+    <!--</RelativeLayout>-->
+
+</android.support.v4.widget.DrawerLayout>

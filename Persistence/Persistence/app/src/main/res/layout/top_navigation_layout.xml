@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="50dp"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:id="@+id/rlyt_navigation_list"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        style="@style/ClickShadow"
+        android:clickable="true">
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/navigation_list"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlyt_navigation_search"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        style="@style/ClickShadow"
+        android:layout_alignParentRight="true"
+        android:clickable="true">
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/navigation_search"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_toLeftOf="@id/rlyt_navigation_search"
+        android:layout_marginRight="40dp"
+        android:layout_toRightOf="@id/rlyt_navigation_list"
+        android:layout_marginLeft="40dp">
+        <RelativeLayout
+            android:id="@+id/rlyt_navigation_2"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            style="@style/ClickShadow"
+            android:layout_centerInParent="true"
+            android:clickable="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="发现"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlyt_navigation_1"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            style="@style/ClickShadow"
+            android:clickable="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="我的"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlyt_navigation_3"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            style="@style/ClickShadow"
+            android:layout_alignParentRight="true"
+            android:clickable="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="动态"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

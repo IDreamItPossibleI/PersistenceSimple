@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/content_frame">
+
+    <include android:id="@+id/top_frame" layout="@layout/top_bar_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_marginTop="30dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_register_phone"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:src="@drawable/icon_register_phone"
+                android:scaleType="fitXY"/>
+            <ImageView
+                android:id="@+id/img_register_clear"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_register_clear"
+                android:scaleType="fitXY"
+                android:layout_alignParentRight="true"/>
+            <EditText
+                android:id="@+id/edt_register_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textCursorDrawable="@null"
+                android:background="@null"
+                android:layout_toRightOf="@id/img_register_phone"
+                android:layout_toLeftOf="@id/img_register_clear"
+                android:layout_alignBottom="@id/img_register_phone"
+                android:hint="请输入手机号"/>
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#88909090"
+            android:layout_marginTop="5dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+            <ImageView
+                android:id="@+id/img_register_password"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:src="@drawable/icon_register_password"
+                android:scaleType="fitXY"/>
+            <ImageView
+                android:id="@+id/img_register_clear2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_register_clear"
+                android:scaleType="fitXY"
+                android:layout_alignParentRight="true"/>
+            <EditText
+                android:id="@+id/edt_register_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textCursorDrawable="@null"
+                android:background="@null"
+                android:inputType="textPassword"
+                android:layout_toRightOf="@id/img_register_password"
+                android:layout_toLeftOf="@id/img_register_clear2"
+                android:layout_alignBottom="@id/img_register_password"
+                android:hint="请输入手机号"/>
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#88909090"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_alert_title">获取权限</string>
+    <string name="permission_alert_msg_title_camera">获取相机权限</string>
+    <string name="permission_alert_msg_content_accounts">JellyBlast需要获取账户列表，否则您将无法收到游戏的推送。</string>
+    <string name="permission_alert_msg_content_camera">【重要！】需要获取相机权限，以开启扫描二维码功能，否则应用将无法扫描二维码。</string>
+    <string name="permission_alert_yes_button">去授权</string>
+    <string name="permission_alert_no_button">取消</string>
+    <string name="setting_alert_title">获取权限</string>
+    <string name="setting_alert_msg">由于无法获取必要的权限，不能正常运行，请开启权限再进行游戏。设置路径：设置->应用->Persistence Simple->权限</string>
+    <string name="setting_alert_yes_button">去设置</string>
+    <string name="setting_alert_no_button">取消</string>
+</resources>
