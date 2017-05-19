@@ -21,6 +21,7 @@
         </activity>
 
         <activity android:name=".QrScanActivity" />
+        <activity android:name=".BookActivity" />
 
     </application>
 

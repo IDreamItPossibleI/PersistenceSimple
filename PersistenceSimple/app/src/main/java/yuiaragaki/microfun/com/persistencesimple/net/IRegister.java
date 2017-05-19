@@ -17,9 +17,9 @@ public interface IRegister {
 
     String URL = "http://192.168.1.8/PersistenceServer/";
 
-    @POST("RegisterServlet")
-    @FormUrlEncoded
-    Call<User> getData(@Field("userName") String userName, @Query("password") String pwd, @Query("phone") String phone);
+//    @POST("RegisterServlet")
+//    @FormUrlEncoded
+//    Call<User> getData(@Field("userName") String userName, @Query("password") String pwd, @Query("phone") String phone);
 
     @GET("{isbn}")
     Call<Book> getBook(@Path("isbn") String isbn);

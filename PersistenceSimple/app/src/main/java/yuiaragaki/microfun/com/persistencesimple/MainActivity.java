@@ -15,6 +15,9 @@ import yuiaragaki.microfun.com.persistencesimple.net.ProgressSubscriber;
 import yuiaragaki.microfun.com.persistencesimple.net.SubscriberOnNextListener;
 import yuiaragaki.microfun.com.persistencesimple.net.entity.Book;
 
+import static yuiaragaki.microfun.com.persistencesimple.QrCodeScanUtil.REQUEST_CODE;
+import static yuiaragaki.microfun.com.persistencesimple.QrCodeScanUtil.REQUEST_KEY;
+
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.btn_scan)
@@ -36,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
                 if(book != null)
                 {
                     Intent intent = new Intent(MainActivity.this, BookActivity.class);
-                    intent.putExtra("book_info", book);
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("book_info", book);
+                    intent.putExtra("data", bundle);
                     startActivity(intent);
                 }
             }
@@ -53,12 +58,16 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_scan)
     public void onScan()
     {
-        QrCodeScanUtil.getInstanse().scan("lalala");
+        QrCodeScanUtil.getInstanse().scan("请将相机对准图书的条形码");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE && data != null)
+        {
+            String isbn=data.getStringExtra(REQUEST_KEY);
 
+        }
     }
 }

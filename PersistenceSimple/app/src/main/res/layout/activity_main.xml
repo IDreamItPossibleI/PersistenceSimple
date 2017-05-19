@@ -19,6 +19,6 @@
         android:id="@+id/btn_scan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="扫面条形码"/>
+        android:text="扫描条形码"/>
 
 </android.support.constraint.ConstraintLayout>

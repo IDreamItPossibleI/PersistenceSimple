@@ -1,13 +1,17 @@
 package yuiaragaki.microfun.com.persistencesimple.net.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by yuiaragaki on 17/5/17.
  */
 
-public class Book {
+public class Book implements Parcelable {
 
 
     /**
@@ -72,9 +76,93 @@ public class Book {
     private String catalog;
     private String ebook_url;
     private String ebook_price;
-    private List<String> author;
-    private List<String> translator;
-    private List<TagsBean> tags;
+    private List<String> author = new ArrayList<String>();
+    private List<String> translator = new ArrayList<String>();
+    private List<TagsBean> tags = new ArrayList<TagsBean>();
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(id);
+        out.writeString(isbn10);
+        out.writeString(isbn13);
+        out.writeString(title);
+        out.writeString(origin_title);
+        out.writeString(alt_title);
+        out.writeString(subtitle);
+        out.writeString(url);
+        out.writeString(alt);
+        out.writeString(image);
+        out.writeString(publisher);
+        out.writeString(pubdate);
+        out.writeString(binding);
+        out.writeString(price);
+        out.writeString(pages);
+        out.writeString(author_intro);
+        out.writeString(summary);
+        out.writeString(catalog);
+        out.writeString(ebook_url);
+        out.writeString(ebook_price);
+        out.writeStringList(author);
+        out.writeStringList(translator);
+//        private ImagesBean images;
+//        private SeriesBean series;
+//        private RatingBean rating;
+//        private List<TagsBean> tags;
+//        out.writeParcelable(images, flags);
+//        out.writeParcelable(series, flags);
+//        out.writeParcelable(rating, flags);
+        out.writeTypedList(tags);
+    }
+
+    public static final Parcelable.Creator<Book> CREATOR = new Creator<Book>() {
+        @Override
+        public Book createFromParcel(Parcel in) {
+            return new Book(in);
+        }
+
+        @Override
+        public Book[] newArray(int size) {
+            return new Book[size];
+        }
+    };
+
+    public Book(Parcel in)
+    {
+        id = in.readString();
+        isbn10 = in.readString();
+        isbn13 = in.readString();
+        title = in.readString();
+        origin_title = in.readString();
+        alt_title = in.readString();
+        subtitle = in.readString();
+        url = in.readString();
+        alt = in.readString();
+        image = in.readString();
+        publisher = in.readString();
+        pubdate = in.readString();
+        binding = in.readString();
+        price = in.readString();
+        pages = in.readString();
+        author_intro = in.readString();
+        summary = in.readString();
+        catalog = in.readString();
+        ebook_url = in.readString();
+        in.readStringList(author);
+        in.readStringList(translator);
+//        private ImagesBean images;
+//        private SeriesBean series;
+//        private RatingBean rating;
+//        private List<TagsBean> tags;
+//        images = in.readParcelable(ImagesBean.class.getClassLoader());
+//        series = in.readParcelable(SeriesBean.class.getClassLoader());
+//        rating = in.readParcelable(RatingBean.class.getClassLoader());
+        in.readTypedList(tags, TagsBean.CREATOR);
+    }
 
     public String getId() {
         return id;
@@ -284,137 +372,259 @@ public class Book {
         this.tags = tags;
     }
 
-    public static class ImagesBean {
-        /**
-         * small : https://img3.doubanio.com/spic/s1001902.jpg
-         * large : https://img3.doubanio.com/lpic/s1001902.jpg
-         * medium : https://img3.doubanio.com/mpic/s1001902.jpg
-         */
-
-        private String small;
-        private String large;
-        private String medium;
-
-        public String getSmall() {
-            return small;
-        }
-
-        public void setSmall(String small) {
-            this.small = small;
-        }
-
-        public String getLarge() {
-            return large;
-        }
-
-        public void setLarge(String large) {
-            this.large = large;
-        }
-
-        public String getMedium() {
-            return medium;
-        }
-
-        public void setMedium(String medium) {
-            this.medium = medium;
-        }
-    }
-
-    public static class RatingBean {
-        /**
-         * max : 10
-         * numRaters : 9438
-         * average : 9.1
-         * min : 0
-         */
-
-        private int max;
-        private int numRaters;
-        private String average;
-        private int min;
-
-        public int getMax() {
-            return max;
-        }
-
-        public void setMax(int max) {
-            this.max = max;
-        }
-
-        public int getNumRaters() {
-            return numRaters;
-        }
-
-        public void setNumRaters(int numRaters) {
-            this.numRaters = numRaters;
-        }
-
-        public String getAverage() {
-            return average;
-        }
-
-        public void setAverage(String average) {
-            this.average = average;
-        }
-
-        public int getMin() {
-            return min;
-        }
-
-        public void setMin(int min) {
-            this.min = min;
-        }
-    }
-
-    public static class SeriesBean {
-        /**
-         * id : 2065
-         * title : 新史学&多元对话系列
-         */
-
-        private String id;
-        private String title;
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-    }
-
-    public static class TagsBean {
-        /**
-         * count : 2416
-         * name : 小王子
-         */
-
-        private int count;
-        private String name;
-
-        public int getCount() {
-            return count;
-        }
-
-        public void setCount(int count) {
-            this.count = count;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
+//    public static class ImagesBean implements Parcelable {
+//        /**
+//         * small : https://img3.doubanio.com/spic/s1001902.jpg
+//         * large : https://img3.doubanio.com/lpic/s1001902.jpg
+//         * medium : https://img3.doubanio.com/mpic/s1001902.jpg
+//         */
+//
+//        private String small;
+//        private String large;
+//        private String medium;
+//
+//        public String getSmall() {
+//            return small;
+//        }
+//
+//        public void setSmall(String small) {
+//            this.small = small;
+//        }
+//
+//        public String getLarge() {
+//            return large;
+//        }
+//
+//        public void setLarge(String large) {
+//            this.large = large;
+//        }
+//
+//        public String getMedium() {
+//            return medium;
+//        }
+//
+//        public void setMedium(String medium) {
+//            this.medium = medium;
+//        }
+//
+//        @Override
+//        public int describeContents() {
+//            return 0;
+//        }
+//
+//        @Override
+//        public void writeToParcel(Parcel out, int flags) {
+//            out.writeString(small);
+//            out.writeString(large);
+//            out.writeString(medium);
+//        }
+//
+//        public static final Parcelable.Creator<ImagesBean> CREATOR = new Creator<ImagesBean>() {
+//            @Override
+//            public ImagesBean createFromParcel(Parcel in) {
+//                return new ImagesBean(in);
+//            }
+//
+//            @Override
+//            public ImagesBean[] newArray(int size) {
+//                return new ImagesBean[size];
+//            }
+//        };
+//
+//        public ImagesBean(Parcel in)
+//        {
+//            small = in.readString();
+//            large = in.readString();
+//            medium = in.readString();
+//        }
+//    }
+//
+//    public static class RatingBean implements Parcelable {
+//        /**
+//         * max : 10
+//         * numRaters : 9438
+//         * average : 9.1
+//         * min : 0
+//         */
+//
+//        private int max;
+//        private int numRaters;
+//        private String average;
+//        private int min;
+//
+//        public int getMax() {
+//            return max;
+//        }
+//
+//        public void setMax(int max) {
+//            this.max = max;
+//        }
+//
+//        public int getNumRaters() {
+//            return numRaters;
+//        }
+//
+//        public void setNumRaters(int numRaters) {
+//            this.numRaters = numRaters;
+//        }
+//
+//        public String getAverage() {
+//            return average;
+//        }
+//
+//        public void setAverage(String average) {
+//            this.average = average;
+//        }
+//
+//        public int getMin() {
+//            return min;
+//        }
+//
+//        public void setMin(int min) {
+//            this.min = min;
+//        }
+//
+//        @Override
+//        public int describeContents() {
+//            return 0;
+//        }
+//
+//        @Override
+//        public void writeToParcel(Parcel out, int flags) {
+//            out.writeInt(max);
+//            out.writeInt(numRaters);
+//            out.writeString(average);
+//            out.writeInt(min);
+//        }
+//
+//        public RatingBean(Parcel in)
+//        {
+//            max = in.readInt();
+//            numRaters = in.readInt();
+//            average = in.readString();
+//            min = in.readInt();
+//        }
+//
+//        public static final Parcelable.Creator<RatingBean> CREATOR = new Creator<RatingBean>() {
+//            @Override
+//            public RatingBean createFromParcel(Parcel in) {
+//                return new RatingBean(in);
+//            }
+//
+//            @Override
+//            public RatingBean[] newArray(int size) {
+//                return new RatingBean[size];
+//            }
+//        };
+//    }
+//
+//    public static class SeriesBean implements Parcelable {
+//        /**
+//         * id : 2065
+//         * title : 新史学&多元对话系列
+//         */
+//
+//        private String id;
+//        private String title;
+//
+//        public String getId() {
+//            return id;
+//        }
+//
+//        public void setId(String id) {
+//            this.id = id;
+//        }
+//
+//        public String getTitle() {
+//            return title;
+//        }
+//
+//        public void setTitle(String title) {
+//            this.title = title;
+//        }
+//
+//        @Override
+//        public int describeContents() {
+//            return 0;
+//        }
+//
+//        @Override
+//        public void writeToParcel(Parcel out, int flags) {
+//            out.writeString(id);
+//            out.writeString(title);
+//        }
+//
+//        public SeriesBean(Parcel in)
+//        {
+//            id = in.readString();
+//            title = in.readString();
+//        }
+//
+//        public static final Parcelable.Creator<SeriesBean> CREATOR = new Creator<SeriesBean>() {
+//            @Override
+//            public SeriesBean createFromParcel(Parcel in) {
+//                return new SeriesBean(in);
+//            }
+//
+//            @Override
+//            public SeriesBean[] newArray(int size) {
+//                return new SeriesBean[size];
+//            }
+//        };
+//    }
+//
+//    public static class TagsBean implements Parcelable {
+//        /**
+//         * count : 2416
+//         * name : 小王子
+//         */
+//
+//        private int count;
+//        private String name;
+//
+//        public int getCount() {
+//            return count;
+//        }
+//
+//        public void setCount(int count) {
+//            this.count = count;
+//        }
+//
+//        public String getName() {
+//            return name;
+//        }
+//
+//        public void setName(String name) {
+//            this.name = name;
+//        }
+//
+//        @Override
+//        public int describeContents() {
+//            return 0;
+//        }
+//
+//        @Override
+//        public void writeToParcel(Parcel out, int flags) {
+//            out.writeInt(count);
+//            out.writeString(name);
+//        }
+//
+//        public TagsBean(Parcel in)
+//        {
+//            count = in.readInt();
+//            name = in.readString();
+//        }
+//
+//        public static final Parcelable.Creator<TagsBean> CREATOR = new Creator<TagsBean>() {
+//            @Override
+//            public TagsBean createFromParcel(Parcel in) {
+//                return new TagsBean(in);
+//            }
+//
+//            @Override
+//            public TagsBean[] newArray(int size) {
+//                return new TagsBean[size];
+//            }
+//        };
+//    }
 }
