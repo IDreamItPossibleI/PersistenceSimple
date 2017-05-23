@@ -5,8 +5,11 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.io.File;
 import java.util.List;
@@ -26,12 +29,27 @@ public class BookActivity extends Activity {
 
     @BindView(R.id.iv_book)
     ImageView ivBook;
-    @BindView(R.id.tv_author)
-    TextView tvAuthor;
-    @BindView(R.id.tv_press)
-    TextView tvPress;
-    @BindView(R.id.tv_pub_date)
-    TextView tvPubDate;
+    @BindView(R.id.edt_isbn13)
+    EditText edtIsbn13;
+    @BindView(R.id.edt_author)
+    EditText edtAuthor;
+    @BindView(R.id.edt_author_intro)
+    EditText edtAuthorIntro;
+    @BindView(R.id.edt_pages)
+    EditText edtPages;
+    @BindView(R.id.edt_press)
+    EditText edtPress;
+    @BindView(R.id.edt_price)
+    EditText edtPrice;
+    @BindView(R.id.edt_pub_date)
+    EditText edtPubDate;
+    @BindView(R.id.edt_summary)
+    EditText edtSummary;
+    @BindView(R.id.edt_title)
+    EditText edtTitle;
+    @BindView(R.id.edt_content)
+    EditText edtContent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +66,22 @@ public class BookActivity extends Activity {
     private void initDate(Book book) {
         List<String> authors = book.getAuthor();
         StringBuilder sbAuthor = new StringBuilder();
-        sbAuthor.append("作者:");
         for(int i=0; i<authors.size(); i++)
         {
             sbAuthor.append(authors.get(i));
             sbAuthor.append(" ");
         }
-        tvAuthor.setText(sbAuthor.toString());
-        tvPress.setText(book.getPublisher());
-        tvPubDate.setText(book.getPubdate());
+        edtAuthor.setText(sbAuthor.toString());
+        edtPress.setText(book.getPublisher());
+        edtPubDate.setText(book.getPubdate());
+        edtAuthorIntro.setText(book.getAuthor_intro());
+        edtIsbn13.setText(book.getIsbn13());
+        edtPages.setText(book.getPages());
+        edtPrice.setText(book.getPrice());
+        edtSummary.setText(book.getSummary());
+        edtTitle.setText(book.getTitle());
+        Glide.with(this).load(book.getImage()).into(ivBook);
+        edtContent.setText(book.toString());
     }
 
     @OnClick(R.id.btn_create_qrcode)

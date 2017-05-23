@@ -372,7 +372,39 @@ public class Book implements Parcelable {
         this.tags = tags;
     }
 
-//    public static class ImagesBean implements Parcelable {
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id='" + id + '\'' +
+                ", isbn10='" + isbn10 + '\'' +
+                ", isbn13='" + isbn13 + '\'' +
+                ", title='" + title + '\'' +
+                ", origin_title='" + origin_title + '\'' +
+                ", alt_title='" + alt_title + '\'' +
+                ", subtitle='" + subtitle + '\'' +
+                ", url='" + url + '\'' +
+                ", alt='" + alt + '\'' +
+                ", image='" + image + '\'' +
+                ", images=" + images +
+                ", publisher='" + publisher + '\'' +
+                ", pubdate='" + pubdate + '\'' +
+                ", rating=" + rating +
+                ", binding='" + binding + '\'' +
+                ", price='" + price + '\'' +
+                ", series=" + series +
+                ", pages='" + pages + '\'' +
+                ", author_intro='" + author_intro + '\'' +
+                ", summary='" + summary + '\'' +
+                ", catalog='" + catalog + '\'' +
+                ", ebook_url='" + ebook_url + '\'' +
+                ", ebook_price='" + ebook_price + '\'' +
+                ", author=" + author +
+                ", translator=" + translator +
+                ", tags=" + tags +
+                '}';
+    }
+
+    //    public static class ImagesBean implements Parcelable {
 //        /**
 //         * small : https://img3.doubanio.com/spic/s1001902.jpg
 //         * large : https://img3.doubanio.com/lpic/s1001902.jpg
